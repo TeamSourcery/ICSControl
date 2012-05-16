@@ -225,7 +225,7 @@ CheckBoxPreference mEnableVolumeOptions;
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.HORIZONTAL_RECENTS_TASK_PANEL, checked ? 1
                             : 0);
-            restartSystemUI();
+            Helpers.restartSystemUI();
             return true;
 
         } else if (preference == mDisableBootAnimation) {
@@ -241,6 +241,7 @@ CheckBoxPreference mEnableVolumeOptions;
                 new CMDProcessor().su
                         .runWaitFor("mv /system/media/bootanimation.backup /system/media/bootanimation.zip");
                 Helpers.getMount("ro");
+                preference.setSummary("");
             }
             return true;
 
@@ -298,14 +299,7 @@ CheckBoxPreference mEnableVolumeOptions;
         return false;
     }
 
-    private void restartSystemUI() {
-        try {
-            Runtime.getRuntime().exec("pkill -TERM -f  com.android.systemui");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
+   
     public static void addButton(Context context, String key) {
         ArrayList<String> enabledToggles = Navbar
                 .getButtonsStringArray(context);

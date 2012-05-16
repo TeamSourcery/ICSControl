@@ -77,7 +77,7 @@
 	<string name="disable_bootanimation_summary">Can you dodge the wrath of Chizzele!</string>
 
         <string name="disable_bootaudio_title">Disable boot audio</string>
- 	<string name="disable_bootaudio_summary">Quiet.</string>
+ 	<string name="disable_bootaudio_summary">Boot Animation Audio is Turned off!</string>
         <string name="disable_bootaudio_summary_disabled">To enable boot audio, you must have an MP3 file at \n/system/media/boot_audio.mp3</string>
  	 	
 
@@ -150,6 +150,7 @@
     <string name="title_led_off">LED pulse OFF duration</string>
     <string name="summary_led_off">@null</string>
     <string name="led_color_title">LED color</string>
+     <string name="led_color_summary">This will change the default LED color. Apps can easily override this setting with their own color.</string>
     <string name="title_led_screen_on">LED flash while screen ON</string>
     <string name="summary_led_screen_on">@null</string>
 

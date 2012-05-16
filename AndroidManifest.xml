@@ -1,9 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    coreApp="true"
-    package="com.sourcery.icscontrol"
-    android:sharedUserId="android.uid.system" >
-
+    package="com.sourcery.icscontrol" >
+    
     <original-package android:name="com.sourcery.icscontrol" />
 
     <uses-permission android:name="android.permission.REBOOT" />

@@ -1,8 +1,6 @@
 
 package com.sourcery.icscontrol.fragments;
 
-import java.io.IOException;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
@@ -15,6 +13,7 @@ import android.util.Log;
 
 import com.sourcery.icscontrol.R;
 import com.sourcery.icscontrol.SettingsPreferenceFragment;
+import com.sourcery.icscontrol.util.Helpers;
 
 public class StatusBarGeneral extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
@@ -123,20 +122,13 @@ public class StatusBarGeneral extends SettingsPreferenceFragment implements
             int val = Integer.parseInt((String) newValue);
             result = Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.STATUS_BAR_TRANSPARENCY, val);
-            restartSystemUI();
+            Helpers.restartSystemUI();
         } else if (preference == mLayout) {
             int val = Integer.parseInt((String) newValue);
             result = Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.STATUS_BAR_LAYOUT, val);
-            restartSystemUI();
+            Helpers.restartSystemUI();
         }
         return result;
     }
-    private void restartSystemUI() {
-        try {
-            Runtime.getRuntime().exec("pkill -TERM -f  com.android.systemui");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
-}
