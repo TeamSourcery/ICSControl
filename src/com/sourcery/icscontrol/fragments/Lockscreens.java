@@ -39,10 +39,10 @@ import android.view.View;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.Toast;
 
-import com.sourcery.icscontrol.R;
 import com.sourcery.icscontrol.SettingsPreferenceFragment;
 import com.sourcery.icscontrol.util.ShortcutPickerHelper;
 import com.sourcery.icscontrol.widgets.LockscreenItemPreference;
+import com.sourcery.icscontrol.R;
 
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
@@ -69,7 +69,6 @@ public class Lockscreens extends SettingsPreferenceFragment implements
     private static final String PREF_VOLUME_MUSIC = "volume_music_controls";
 
     private static final String PREF_LOCKSCREEN_BATTERY = "lockscreen_battery";
-    private static final String PREF_LOCKSCREEN_WEATHER = "lockscreen_weather";
     private static final String PREF_LOCKSCREEN_TEXT_COLOR = "lockscreen_text_color";
     
     private static final String PREF_SHOW_LOCK_BEFORE_UNLOCK = "show_lock_before_unlock";
@@ -88,7 +87,6 @@ public class Lockscreens extends SettingsPreferenceFragment implements
     CheckBoxPreference mVolumeMusic;
     CheckBoxPreference mLockscreenLandscape;
     CheckBoxPreference mLockscreenBattery;
-    CheckBoxPreference mLockscreenWeather;
     CheckBoxPreference mShowLockBeforeUnlock;
     ColorPickerPreference mLockscreenTextColor;
 
@@ -244,7 +242,7 @@ public class Lockscreens extends SettingsPreferenceFragment implements
             // intent.putExtra("return-data", false);
             intent.putExtra("spotlightX", spotlightX);
             intent.putExtra("spotlightY", spotlightY);
-            intent.putExtra(MediaStore.EXTRA_OUTPUT, getTempFileUri());
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(getTempFile()));
             intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
 
             startActivityForResult(intent, REQUEST_PICK_WALLPAPER);
