@@ -14,6 +14,7 @@ import android.util.Log;
 import com.sourcery.icscontrol.R;
 import com.sourcery.icscontrol.SettingsPreferenceFragment;
 import com.sourcery.icscontrol.util.Helpers;
+import com.sourcery.icscontrol.widgets.SeekBarPreference;
 
 public class StatusBarGeneral extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
@@ -21,12 +22,14 @@ public class StatusBarGeneral extends SettingsPreferenceFragment implements
     private static final String PREF_SETTINGS_BUTTON_BEHAVIOR = "settings_behavior";
     private static final String PREF_AUTO_HIDE_TOGGLES = "auto_hide_toggles";
     private static final String PREF_BRIGHTNESS_TOGGLE = "status_bar_brightness_toggle";
+    private static final String PREF_ICON_TRANSPARENCY = "status_bar_icon_transparency";
     private static final String PREF_TRANSPARENCY = "status_bar_transparency";
     private static final String PREF_LAYOUT = "status_bar_layout";
 
     CheckBoxPreference mDefaultSettingsButtonBehavior;
     CheckBoxPreference mAutoHideToggles;
     CheckBoxPreference mStatusBarBrightnessToggle;
+    SeekBarPreference mIconAlpha;
     ListPreference mTransparency;
     ListPreference mLayout;
 
@@ -56,7 +59,13 @@ public class StatusBarGeneral extends SettingsPreferenceFragment implements
                 .getContentResolver(), Settings.System.STATUS_BAR_BRIGHTNESS_TOGGLE,
                 0) == 1);
 
-                
+        float defaultAlpha = Settings.System.getFloat(getActivity()
+ 	        .getContentResolver(), Settings.System.STATUS_BAR_ICON_TRANSPARENCY,
+ 	         0.55f);
+ 	mIconAlpha = (SeekBarPreference) findPreference("icon_transparency");
+ 	mIconAlpha.setInitValue((int) (defaultAlpha * 100));
+        mIconAlpha.setOnPreferenceChangeListener(this);
+              
         mTransparency = (ListPreference) findPreference(PREF_TRANSPARENCY);
         mTransparency.setOnPreferenceChangeListener(this);
         mTransparency.setValue(Integer.toString(Settings.System.getInt(getActivity()
@@ -128,6 +137,12 @@ public class StatusBarGeneral extends SettingsPreferenceFragment implements
             result = Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.STATUS_BAR_LAYOUT, val);
             Helpers.restartSystemUI();
+        } else if (preference == mIconAlpha) {
+ 	    float val = Float.parseFloat((String) newValue);
+ 	    Settings.System.putFloat(getActivity().getContentResolver(),
+ 	             Settings.System.STATUS_BAR_ICON_TRANSPARENCY,
+ 	             val / 100);
+ 	  return true;
         }
         return result;
     }
