@@ -258,6 +258,7 @@ CheckBoxPreference mEnableVolumeOptions;
                 new CMDProcessor().su
                         .runWaitFor("mv /system/media/boot_audio.disabled /system/media/boot_audio.mp3");
                 Helpers.getMount("ro");
+                preference.setSummary("");
             }
             return true;
 
