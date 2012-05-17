@@ -1,5 +1,5 @@
 
-package com.roman.romcontrol.widgets;
+package com.sourcery.icscontrol.widgets;
 
 import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.roman.romcontrol.R;
+import com.sourcery.icscontrol.R;
 
 import java.io.File;
 
