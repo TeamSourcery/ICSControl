@@ -18,10 +18,10 @@ public class StatusBarSignal extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 
     ListPreference mDbmStyletyle;
-ListPreference mWifiStyle;
+    ListPreference mWifiStyle;
     ColorPickerPreference mColorPicker;
-ColorPickerPreference mWifiColorPicker;
-//    CheckBoxPreference mHideSignal;
+    ColorPickerPreference mWifiColorPicker;
+    CheckBoxPreference mHideSignal;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,7 +38,7 @@ ColorPickerPreference mWifiColorPicker;
 
         mColorPicker = (ColorPickerPreference) findPreference("signal_color");
         mColorPicker.setOnPreferenceChangeListener(this);
- mWifiStyle = (ListPreference) findPreference("wifi_signal_style");
+        mWifiStyle = (ListPreference) findPreference("wifi_signal_style");
         mWifiStyle.setOnPreferenceChangeListener(this);
         mWifiStyle.setValue(Integer.toString(Settings.System.getInt(getActivity()
                 .getContentResolver(), Settings.System.STATUSBAR_WIFI_SIGNAL_TEXT,
@@ -46,23 +46,23 @@ ColorPickerPreference mWifiColorPicker;
 
         mWifiColorPicker = (ColorPickerPreference) findPreference("wifi_signal_color");
         mWifiColorPicker.setOnPreferenceChangeListener(this);
-//        mHideSignal = (CheckBoxPreference) findPreference("hide_signal");
-//        mHideSignal.setChecked(Settings.System.getInt(getActivity()
-//                .getContentResolver(), Settings.System.STATUSBAR_HIDE_SIGNAL_BARS,
-//                0) != 0);
+        mHideSignal = (CheckBoxPreference) findPreference("hide_signal");
+        mHideSignal.setChecked(Settings.System.getInt(getActivity()
+                .getContentResolver(), Settings.System.STATUSBAR_HIDE_SIGNAL_BARS,
+                0) != 0);
 
     }
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
             Preference preference) {
-//        if (preference == mHideSignal) {
-//            Settings.System.putInt(getActivity().getContentResolver(),
-//                    Settings.System.STATUSBAR_HIDE_SIGNAL_BARS,
-//                    ((CheckBoxPreference) preference).isChecked() ? 1 : 0);
-//
-//            return true;
-//        }
+        if (preference == mHideSignal) {
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.STATUSBAR_HIDE_SIGNAL_BARS,
+                    ((CheckBoxPreference) preference).isChecked() ? 1 : 0);
+
+            return true;
+        }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
