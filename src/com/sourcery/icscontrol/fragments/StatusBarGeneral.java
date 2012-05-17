@@ -25,6 +25,7 @@ public class StatusBarGeneral extends SettingsPreferenceFragment implements
     private static final String PREF_ICON_TRANSPARENCY = "status_bar_icon_transparency";
     private static final String PREF_TRANSPARENCY = "status_bar_transparency";
     private static final String PREF_LAYOUT = "status_bar_layout";
+    private static final String PREF_FONTSIZE = "status_bar_fontsize";
 
     CheckBoxPreference mDefaultSettingsButtonBehavior;
     CheckBoxPreference mAutoHideToggles;
@@ -32,6 +33,7 @@ public class StatusBarGeneral extends SettingsPreferenceFragment implements
     SeekBarPreference mIconAlpha;
     ListPreference mTransparency;
     ListPreference mLayout;
+    ListPreference mFontsize;
 
     Context mContext;
 
@@ -76,8 +78,13 @@ public class StatusBarGeneral extends SettingsPreferenceFragment implements
         mLayout.setOnPreferenceChangeListener(this);
         mLayout.setValue(Integer.toString(Settings.System.getInt(getActivity()
                 .getContentResolver(), Settings.System.STATUS_BAR_LAYOUT,
-                100)));
+                0)));
 
+        mFontsize = (ListPreference) findPreference(PREF_FONTSIZE);
+        mFontsize.setOnPreferenceChangeListener(this);
+        mFontsize.setValue(Integer.toString(Settings.System.getInt(getActivity()
+                .getContentResolver(), Settings.System.STATUSBAR_FONT_SIZE,
+                16)));
 
         if (mTablet) {
             PreferenceScreen prefs = getPreferenceScreen();
@@ -143,6 +150,11 @@ public class StatusBarGeneral extends SettingsPreferenceFragment implements
  	             Settings.System.STATUS_BAR_ICON_TRANSPARENCY,
  	             val / 100);
  	  return true;
+        } else if (preference == mFontsize) {
+            int val = Integer.parseInt((String) newValue);
+            result = Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.STATUSBAR_FONT_SIZE, val);
+            Helpers.restartSystemUI();
         }
         return result;
     }
