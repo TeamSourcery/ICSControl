@@ -33,12 +33,13 @@ public class UserInterface extends SettingsPreferenceFragment implements
 
     private static final String PREF_CRT_ON = "crt_on";
     private static final String PREF_CRT_OFF = "crt_off";
-private static final String PREF_ENABLE_VOLUME_OPTIONS = "enable_volume_options";
+    private static final String PREF_ENABLE_VOLUME_OPTIONS = "enable_volume_options";
     private static final String PREF_IME_SWITCHER = "ime_switcher";
     private static final String PREF_CUSTOM_CARRIER_LABEL = "custom_carrier_label";
     private static final String PREF_LONGPRESS_TO_KILL = "longpress_to_kill";
     private static final String PREF_ROTATION_ANIMATION = "rotation_animation_delay";
     private static final String PREF_180 = "rotate_180";
+    private static final String PREF_RECENT_APP_SWITCHER = "recent_app_switcher";
 
     CheckBoxPreference mCrtOnAnimation;
     CheckBoxPreference mCrtOffAnimation;
@@ -46,12 +47,12 @@ CheckBoxPreference mEnableVolumeOptions;
     CheckBoxPreference mShowImeSwitcher;
     CheckBoxPreference mLongPressToKill;
     CheckBoxPreference mAllow180Rotation;
-    CheckBoxPreference mHorizontalAppSwitcher;
     Preference mCustomLabel;
     ListPreference mAnimationRotationDelay;
     CheckBoxPreference mDisableBootAnimation;
     CheckBoxPreference mDisableBootAudio;
     CheckBoxPreference mDisableBugMailer;
+    ListPreference mRecentAppSwitcher;
 
     String mCustomLabelText = null;
     int newDensityValue;
@@ -100,12 +101,12 @@ CheckBoxPreference mEnableVolumeOptions;
         mAllow180Rotation.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.ACCELEROMETER_ROTATION_ANGLES, (1 | 2 | 8)) == (1 | 2 | 4 | 8));
 
-        mHorizontalAppSwitcher = (CheckBoxPreference) findPreference("horizontal_recents_task_panel");
-        mHorizontalAppSwitcher.setChecked(Settings.System.getInt(getActivity()
-                .getContentResolver(),
-                Settings.System.HORIZONTAL_RECENTS_TASK_PANEL, 0) == 1);
+        mRecentAppSwitcher = (ListPreference) findPreference(PREF_RECENT_APP_SWITCHER);
+ 	mRecentAppSwitcher.setOnPreferenceChangeListener(this);
+        mRecentAppSwitcher.setValue(Integer.toString(Settings.System.getInt(getActivity()
+ 	         .getContentResolver(), Settings.System.RECENT_APP_SWITCHER,
+                 0)));
 
-              
         mDisableBootAnimation = (CheckBoxPreference) findPreference("disable_bootanimation");
         mDisableBootAnimation.setChecked(!new File("/system/media/bootanimation.zip").exists());
         if (mDisableBootAnimation.isChecked())
@@ -218,16 +219,7 @@ CheckBoxPreference mEnableVolumeOptions;
                     Settings.System.ACCELEROMETER_ROTATION_ANGLES, checked ? (1 | 2 | 4 | 8)
                             : (1 | 2 | 8));
             return true;
-
-        } else if (preference == mHorizontalAppSwitcher) {
-
-            boolean checked = ((CheckBoxPreference) preference).isChecked();
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.HORIZONTAL_RECENTS_TASK_PANEL, checked ? 1
-                            : 0);
-            Helpers.restartSystemUI();
-            return true;
-
+       
         } else if (preference == mDisableBootAnimation) {
             boolean checked = ((CheckBoxPreference) preference).isChecked();
             if (checked) {
@@ -296,11 +288,16 @@ CheckBoxPreference mEnableVolumeOptions;
                     Integer.parseInt((String) newValue));
 
             return true;
+       } else if (preference == mRecentAppSwitcher) {
+            int val = Integer.parseInt((String) newValue);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                Settings.System.RECENT_APP_SWITCHER, val);
+            Helpers.restartSystemUI();
+            return true;  
         }
         return false;
     }
 
-   
     public static void addButton(Context context, String key) {
         ArrayList<String> enabledToggles = Navbar
                 .getButtonsStringArray(context);
