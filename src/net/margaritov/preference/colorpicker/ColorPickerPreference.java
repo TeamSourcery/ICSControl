@@ -112,8 +112,7 @@ public class ColorPickerPreference extends Preference implements
  	             .findViewById(android.R.id.widget_frame));
         if (widgetFrameView == null)
             return;
-        }
-
+       
         widgetFrameView.setVisibility(View.VISIBLE);
         widgetFrameView.setPadding(
                 widgetFrameView.getPaddingLeft(),
