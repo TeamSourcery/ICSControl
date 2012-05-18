@@ -1,7 +1,6 @@
 
 package com.sourcery.icscontrol.fragments;
 
-import net.margaritov.preference.colorpicker.ColorPickerPreference;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
@@ -13,6 +12,8 @@ import android.util.Log;
 
 import com.sourcery.icscontrol.R;
 import com.sourcery.icscontrol.SettingsPreferenceFragment;
+import com.sourcery.icscontrol.util.Helpers;
+import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 public class StatusBarSignal extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
@@ -46,6 +47,7 @@ public class StatusBarSignal extends SettingsPreferenceFragment implements
 
         mWifiColorPicker = (ColorPickerPreference) findPreference("wifi_signal_color");
         mWifiColorPicker.setOnPreferenceChangeListener(this);
+
         mHideSignal = (CheckBoxPreference) findPreference("hide_signal");
         mHideSignal.setChecked(Settings.System.getInt(getActivity()
                 .getContentResolver(), Settings.System.STATUSBAR_HIDE_SIGNAL_BARS,
@@ -60,7 +62,8 @@ public class StatusBarSignal extends SettingsPreferenceFragment implements
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.STATUSBAR_HIDE_SIGNAL_BARS,
                     ((CheckBoxPreference) preference).isChecked() ? 1 : 0);
-
+            Helpers.restartSystemUI();
+           
             return true;
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
@@ -85,7 +88,7 @@ public class StatusBarSignal extends SettingsPreferenceFragment implements
                     Settings.System.STATUSBAR_SIGNAL_TEXT_COLOR, intHex);
 
             return true;
-} else if (preference == mWifiStyle) {
+       } else if (preference == mWifiStyle) {
 
             int val = Integer.parseInt((String) newValue);
             Settings.System.putInt(getActivity().getContentResolver(),

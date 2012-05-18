@@ -12,7 +12,7 @@
 		android:title="@string/signal_color_title"
 		android:defaultValue="@android:color/holo_blue_light" />
 
-<ListPreference
+        <ListPreference
 		android:entries="@array/wifi_signal_style_entries"
 		android:entryValues="@array/wifi_signal_style_values"
 		android:key="wifi_signal_style"
@@ -23,9 +23,9 @@
 		android:title="@string/wifi_signal_color_title"
 		android:defaultValue="@android:color/holo_blue_light" />
 
-<!-- 	<CheckBoxPreference -->
-<!-- 		android:key="hide_signal" -->
-<!-- 		android:title="@string/hide_signal_title" -->
-<!-- 		android:summary="@string/hide_signal_summary" /> -->
+	<CheckBoxPreference 
+ 		android:key="hide_signal" 
+ 		android:title="@string/hide_signal_title" 
+ 		android:summary="@string/hide_signal_summary" /> 
 
 </PreferenceScreen>

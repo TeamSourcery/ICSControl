@@ -155,8 +155,8 @@
     <string name="summary_led_screen_on">@null</string>
 
     <!--  Statusbar | General -->
-    <string name="title_settings_behavior">Use default settings behavior</string>
-    <string name="summary_settings_behavior">Default behavior is to long press for toggles, press for settings. Uncheck to press for toggles, long press for settings</string>
+    <string name="title_settings_behavior">Settings press option.</string>
+    <string name="summary_settings_behavior">When checked short press for settings and long press for toggles to Display or Vanish. Uncheck to reverse actions.</string>
 
     <string name="title_auto_hide_toggles">Auto hide toggles</string>
     <string name="summary_auto_hide_toggles">After collapse toggles will hide</string>
@@ -215,7 +215,7 @@
 	<string name="signal_style">Signal Text Style</string>
 	<string name="signal_color_title">Signal Text Color</string>
 	<string name="hide_signal_title">Hide signal bars</string>
-	<string name="hide_signal_summary">Will also hide data indicator for now. Will be able to separate later.</string>
+	<string name="hide_signal_summary">System UI will restart. </string>
    <string name="wifi_signal_style">WiFi Signal Text Style</string>
    <string name="wifi_signal_color_title">WiFi Signal color</string>
     <!-- Color Picker -->
@@ -237,5 +237,5 @@
 	
 	<string name="enable_volume_options">Enable Volume Options!</string>
 	<string name="statusbar_fontsize">Statusbar Font Size</string>
- 	<string name="statusbar_fontsize_summary">Change the size of text elements on statusbar</string>
+ 	<string name="statusbar_fontsize_summary">Change text size on status bar.</string>
 </resources>
