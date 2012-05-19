@@ -207,9 +207,7 @@ public class ICSControlActivity extends PreferenceActivity implements ButtonBarH
             // Ids are integers, so downcasting
             int id = (int) header.id;
 
-            if (id == R.id.mTablet)
-                target.remove(header);
-
+           
             // Increment if the current one wasn't removed by the Utils code.
             if (target.get(i) == header) {
                 // Hold on to the first header, when we need to reset to the top-level
