@@ -11,6 +11,8 @@ import java.io.IOException;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -204,4 +206,12 @@ public class Helpers {
     public static void restartSystemUI() {
     new CMDProcessor().su.run("pkill -TERM -f com.android.systemui");
   }
+
+ public static boolean isScreenLarge() {
+        final int screenSize = Resources.getSystem().getConfiguration().screenLayout &
+                Configuration.SCREENLAYOUT_SIZE_MASK;
+        boolean isScreenLarge = screenSize == Configuration.SCREENLAYOUT_SIZE_LARGE ||
+            screenSize == Configuration.SCREENLAYOUT_SIZE_XLARGE;
+        return isScreenLarge;
+    }
 }
