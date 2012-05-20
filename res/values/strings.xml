@@ -8,7 +8,7 @@
     <string name="lockscreen_options">Lockscreen options</string>
     <string name="power_menu_optons">Power menu options</string>
     <string name="functionality">LED</string>
-    <string name="led_options">LED Options</string>
+    <string name="led_options">LED options</string>
     <string name="statusbar">Statusbar Tweaks</string>
     <string name="general">Magic Tweaks</string>
     <string name="toggles_layout">Toggles Options</string>
@@ -144,10 +144,19 @@
     
    
 
-    
+    <!--  LED -->
+    <string name="title_led_on">LED pulse ON duration</string>
+    <string name="summary_led_on">@null</string>
+    <string name="title_led_off">LED pulse OFF duration</string>
+    <string name="summary_led_off">@null</string>
+    <string name="led_color_title">LED color</string>
+     <string name="led_color_summary">This will change the default LED color. Apps can easily override this setting with their own color.</string>
+    <string name="title_led_screen_on">LED flash while screen ON</string>
+    <string name="summary_led_screen_on">@null</string>
+
     <!--  Statusbar | General -->
-    <string name="title_settings_behavior">Settings press option.</string>
-    <string name="summary_settings_behavior">When checked short press for settings and long press for toggles to Display or Vanish. Uncheck to reverse actions.</string>
+    <string name="title_settings_behavior">Use default settings behavior</string>
+    <string name="summary_settings_behavior">Default behavior is to long press for toggles, press for settings. Uncheck to press for toggles, long press for settings</string>
 
     <string name="title_auto_hide_toggles">Auto hide toggles</string>
     <string name="summary_auto_hide_toggles">After collapse toggles will hide</string>

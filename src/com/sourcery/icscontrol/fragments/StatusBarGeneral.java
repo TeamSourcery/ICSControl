@@ -154,7 +154,8 @@ public class StatusBarGeneral extends SettingsPreferenceFragment implements
             int val = Integer.parseInt((String) newValue);
             result = Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.STATUSBAR_FONT_SIZE, val);
-            
+            Helpers.restartSystemUI();
+
         }
         return result;
     }

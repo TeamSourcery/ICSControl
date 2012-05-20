@@ -4,11 +4,6 @@
     	<attr format="string" name="checkAll" />
     	<attr format="string" name="separator" />
     </declare-styleable>
-    <declare-styleable name="SeekBarPreference">
- 	<attr name="seekbar_max" format="integer" />
- 	<attr name="seekbar_min" format="integer" />
- 	<attr name="seekbar_interval" format="integer" />
-        <attr name="seekbar_default_value" format="integer" />
-    </declare-styleable>
+    
        
 </resources>

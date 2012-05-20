@@ -63,8 +63,8 @@
        
         
         <activity
-            android:name="com.android.settings.notificationlight.NotificationLightSettings"
-            android:label="LED Options" >
+            android:name=".fragments.Led"
+            android:label="LED" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -288,7 +288,6 @@
 		<item>DATA</item>
 		<item>LTE</item>
 		<item>AP</item>
-                <item>TETHER</item>
 		
 	</string-array>
 	
@@ -305,7 +304,6 @@
 		<item>Data</item>
 		<item>4G LTE</item>
 		<item>Tethering (AP)</item>
-                <item>USB Tether</item>
                 
 	</string-array>
 	
@@ -415,8 +413,7 @@
 		<item>24</item>
                 <item>22</item>
 		<item>20</item>
-                
-	</string-array>
+         <string-array>
 
 <string-array name="recent_app_switcher_entries">
 		<item>Stock</item>
@@ -436,7 +433,7 @@
 		<item>14dp</item>
 		<item>16dp(Default)</item>
 		<item>20dp</item>
-		<item>24dp</item>
+		<item>23dp</item>
 	</string-array>
 
 	<string-array name="statusbar_fontsize_values">
@@ -445,9 +442,7 @@
 		<item>14</item>
 		<item>16</item>
 		<item>20</item>
-		<item>24</item>
+		<item>23</item>
 	</string-array>
-
-        
 
 </resources>

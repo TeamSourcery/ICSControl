@@ -90,7 +90,7 @@
 
 	<header
 		android:id="@+id/led"
-		android:fragment="com.android.settings.notificationlight.NotificationLightSettings" 
+		android:fragment="com.sourcery.icscontrol.fragments.Led"
 		android:title="@string/led_options"
 		android:icon="@drawable/ic_ics_control_led"
 		android:summary="@string/header_summary_led" />
