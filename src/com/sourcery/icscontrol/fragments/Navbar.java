@@ -326,32 +326,16 @@ public class Navbar extends SettingsPreferenceFragment implements
         switch (dp) {
             case 54:
                 return getResources().getDimensionPixelSize(R.dimen.navigation_bar_54);
-            case 52:
-                return getResources().getDimensionPixelSize(R.dimen.navigation_bar_52);
-            case 50:
-                return getResources().getDimensionPixelSize(R.dimen.navigation_bar_50);
             case 48:
                 return getResources().getDimensionPixelSize(R.dimen.navigation_bar_48);
-            case 46:
-                return getResources().getDimensionPixelSize(R.dimen.navigation_bar_46);
             case 42:
                 return getResources().getDimensionPixelSize(R.dimen.navigation_bar_42);
-            case 38:
-                return getResources().getDimensionPixelSize(R.dimen.navigation_bar_38);
             case 36:
                 return getResources().getDimensionPixelSize(R.dimen.navigation_bar_36);
-            case 34:
-                return getResources().getDimensionPixelSize(R.dimen.navigation_bar_34);
             case 30:
                 return getResources().getDimensionPixelSize(R.dimen.navigation_bar_30);
-            case 28:
-                return getResources().getDimensionPixelSize(R.dimen.navigation_bar_28);
             case 24:
-                return getResources().getDimensionPixelSize(R.dimen.navigation_bar_24);  
-            case 22:
-                return getResources().getDimensionPixelSize(R.dimen.navigation_bar_22);
-            case 20:
-                return getResources().getDimensionPixelSize(R.dimen.navigation_bar_20);  
+                return getResources().getDimensionPixelSize(R.dimen.navigation_bar_24);
         }
         return -1;
     }
