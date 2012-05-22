@@ -421,12 +421,14 @@
 		<item>Stock</item>
 		<item>WebOS style</item>
 		<item>Sense 4 style</item>
+                <item>win 7 style</item>
 	</string-array>
 
 	<string-array name="recent_app_switcher_values" translatable="false">
 		<item>0</item>
 		<item>1</item>
 		<item>2</item>
+                <item>3</item>
 	</string-array>
 
 </resources>
