@@ -15,7 +15,6 @@
  */
 
 package com.sourcery.icscontrol.util;
-
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
@@ -33,7 +32,6 @@ import android.os.Parcelable;
 import android.util.Log;
 
 import com.sourcery.icscontrol.R;
-
 public class ShortcutPickerHelper {
 
     private Fragment mParent;
@@ -52,7 +50,7 @@ public class ShortcutPickerHelper {
          * @param icon Icon for the shortcut, or null
          * @param isApplication true for standard app, false for "shortcut"
          */
-     void shortcutPicked(String uri, String friendlyName, Bitmap icon, boolean isApplication);
+        void shortcutPicked(String uri, String friendlyName, Bitmap icon, boolean isApplication);
     }
 
     public ShortcutPickerHelper(Fragment parent, OnPickListener listener) {
@@ -124,7 +122,7 @@ public class ShortcutPickerHelper {
         String appUri = intent.toUri(0);
         appUri = appUri.replaceAll("com.android.contacts.action.QUICK_CONTACT",
                 "android.intent.action.VIEW");
-         /* Try to get the icon (if any) */
+        /* Try to get the icon (if any) */
         Bitmap bmp = null;
         Parcelable extra = data.getParcelableExtra(Intent.EXTRA_SHORTCUT_ICON);
         if (extra != null && extra instanceof Bitmap)
@@ -139,7 +137,7 @@ public class ShortcutPickerHelper {
                     final int id = resources.getIdentifier(iconResource.resourceName, null, null);
                     bmp = BitmapFactory.decodeResource(resources, id);
                 } catch (Exception e) {
-                    Log.w("ROMControl.ShortcutPicker", "Could not load shortcut icon: " + extra);
+                    Log.w("ICSControl.ShortcutPicker", "Could not load shortcut icon: " + extra);
                 }
             }
         }

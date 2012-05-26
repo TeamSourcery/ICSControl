@@ -1,6 +1,17 @@
 
 package com.sourcery.icscontrol.fragments;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+
+import net.margaritov.preference.colorpicker.ColorPickerPreference;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentResolver;
@@ -40,20 +51,11 @@ import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.Toast;
 
 import com.sourcery.icscontrol.SettingsPreferenceFragment;
+import com.sourcery.icscontrol.R;
 import com.sourcery.icscontrol.util.ShortcutPickerHelper;
 import com.sourcery.icscontrol.widgets.LockscreenItemPreference;
-import com.sourcery.icscontrol.R;
 
-import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
 
 public class Lockscreens extends SettingsPreferenceFragment implements
         ShortcutPickerHelper.OnPickListener, OnPreferenceChangeListener {

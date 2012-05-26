@@ -53,9 +53,7 @@ public class PowerMenu extends SettingsPreferenceFragment {
                 .getContentResolver(), Settings.System.POWER_DIALOG_SHOW_NAVBAR_HIDE,
                 0) == 1);
         
-        if(mTablet) {
-            getPreferenceScreen().removePreference(mShowNavBarHide);
-        }
+        
     }
 
     @Override

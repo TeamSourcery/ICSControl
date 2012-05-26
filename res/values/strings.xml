@@ -38,6 +38,10 @@
     <string name="summary_pref_menu_display">Remember to remove your menu buttons if you\'re using the big menu button!, Reboot Required!</string>
     <string name="navigation_bar">Navigation bar</string>
     <string name="navigation_bar_tint_title">Navigation bar color</string>
+    <string name="navigation_bar_glow_tint_title">Navigation bar glow color</string>
+    <string name="navigation_bar_glow_tint_summary">When you press on a button, there is a glow. Use this to change the color of the glow.</string>
+    <string name="navigation_bar_height_title">Navigation bar height</string>
+    <string name="navigation_bar_width_title">Navigation bar width</string>
 
     <string name="title_pref_navigation_menu_display">Menu visibility</string>
     <string name="summary_pref_navigation_menu_display">How and when do you want the menu buttons to appear?</string>
@@ -125,6 +129,9 @@
     <string name="lockscreen_action_mms">SMS</string>
     <string name="lockscreen_action_phone">Phone</string>
     <string name="lockscreen_action_none">Empty</string>
+    <string name="lockscreen_custom_app_icon_no_sd">Insert SD card to use this feature</string>
+    <string name="lockscreen_custom_app_icon_successfully">"'s icon set successfully!"</string>
+    <string name="lockscreen_custom_app_icon_failed">"Setting icon failed! Is your SD mounted?"</string>
     <string name="lockscreen_landscape_title">Horizontal lockscreen</string>
     <string name="lockscreen_landscape_summary">Whether horizontal lockscreen orientation will be enabled</string>
     <string name="lockscreen_quick_unlock_control_title">Quick pin unlock</string>
@@ -238,4 +245,25 @@
 	<string name="enable_volume_options">Enable Volume Options!</string>
 	<string name="statusbar_fontsize">Statusbar Font Size</string>
  	<string name="statusbar_fontsize_summary">Change text size on status bar.</string>
-</resources>
+
+     <!-- strings for custom navbar -->
+
+        <string name="navbar_button_cat">Navigation bar buttons</string>
+        <string name="navbar_qty_title">Navigation button quantity</string>
+        <string name="navbar_qty_summary">Choose the number of navigation buttons</string>
+        <string name="navbar_action_title">Button %1$s action &amp; icon</string>
+        <string name="navbar_longpress_title">Button %1$s longpress action</string>
+        <string name="navbar_action_home">Home</string>
+        <string name="navbar_action_back">Back</string>
+        <string name="navbar_action_recents">Recents</string>
+        <string name="navbar_action_search">Search</string>
+        <string name="navbar_action_menu">Menu</string>
+        <string name="navbar_action_kill">Kill task</string>
+        <string name="navbar_action_power">Power</string>
+        <string name="navbar_action_none">Empty</string>
+ 
+        <string name="navbar_enable_dialog_title">Reboot required!</string>
+        <string name="navbar_enable_dialog_msg">Please reboot to enable/disable the navigation bar properly!</string>
+        <string name="navbar_enable_dialog_negative">I\'ll reboot later</string>
+        <string name="navbar_enable_dialog_Positive">Reboot now!</string>
+  </resources>
