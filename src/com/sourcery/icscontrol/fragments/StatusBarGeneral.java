@@ -101,7 +101,7 @@ public class StatusBarGeneral extends SettingsPreferenceFragment implements
             Preference preference) {
         if (preference == mDefaultSettingsButtonBehavior) {
 
-            Log.e("LOL", "b");
+            
             Settings.System.putInt(mContext.getContentResolver(),
                     Settings.System.STATUSBAR_SETTINGS_BEHAVIOR,
                     ((CheckBoxPreference) preference).isChecked() ? 1 : 0);
@@ -109,7 +109,7 @@ public class StatusBarGeneral extends SettingsPreferenceFragment implements
 
         } else if (preference == mAutoHideToggles) {
 
-            Log.e("LOL", "m");
+           
             Settings.System.putInt(mContext.getContentResolver(),
                     Settings.System.STATUSBAR_QUICKTOGGLES_AUTOHIDE,
                     ((CheckBoxPreference) preference).isChecked() ? 1 : 0);
@@ -117,7 +117,7 @@ public class StatusBarGeneral extends SettingsPreferenceFragment implements
 
         } else if (preference == mStatusBarBrightnessToggle) {
 
-            Log.e("LOL", "m");
+           
             Settings.System.putInt(mContext.getContentResolver(),
                     Settings.System.STATUS_BAR_BRIGHTNESS_TOGGLE,
                     ((CheckBoxPreference) preference).isChecked() ? 1 : 0);

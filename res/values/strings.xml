@@ -260,10 +260,14 @@
         <string name="navbar_action_menu">Menu</string>
         <string name="navbar_action_kill">Kill task</string>
         <string name="navbar_action_power">Power</string>
+        <string name="navbar_action_screenshot">Screenshot</string>
         <string name="navbar_action_none">Empty</string>
  
         <string name="navbar_enable_dialog_title">Reboot required!</string>
         <string name="navbar_enable_dialog_msg">Please reboot to enable/disable the navigation bar properly!</string>
         <string name="navbar_enable_dialog_negative">I\'ll reboot later</string>
         <string name="navbar_enable_dialog_Positive">Reboot now!</string>
+
+         <string name="status_bar_notif_count_title">Show notification count</string>
+         <string name="status_bar_notif_count_summary">Display number of pending notifications on the status bar</string>
   </resources>
