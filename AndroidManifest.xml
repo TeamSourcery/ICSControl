@@ -62,15 +62,7 @@
         </activity>
        
         
-        <activity
-            android:name=".fragments.Led"
-            android:label="LED" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="com.sourcery.icscontrol.SHORTCUT" />
-            </intent-filter>
-        </activity>
+       
         <activity
             android:name=".fragments.PowerMenu"
             android:label="Power Menu" >

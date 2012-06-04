@@ -1,34 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ICSourcery Modifications</string>
+    <string name="app_name">ICSourcery Magic Commands</string>
 
     <!-- Main -->
     <string name="user_interface">Magic Tweaks</string>
-    <string name="general_ui">Wand Commands</string>
+    <string name="general_ui">Magical Commands</string>
     <string name="lockscreen_options">Lockscreen options</string>
     <string name="power_menu_optons">Power menu options</string>
-    <string name="functionality">LED</string>
-    <string name="led_options">LED options</string>
+    <string name="functionality">LED Now under Display Settings</string>
+    <string name="led_options">LED Options</string>
     <string name="statusbar">Statusbar Tweaks</string>
-    <string name="general">Magic Tweaks</string>
+    <string name="general">Magical UI</string>
     <string name="toggles_layout">Toggles Options</string>
     <string name="clock">Clock Adjustments</string>
-    <string name="battery">Battery Changes</string>
+    <string name="battery">Battery Related Changes</string>
     <string name="nav_bar">Navigation bar</string>
     <string name="tools">Tools</string>
     <string name="signal">Signal Styles and Colors</string>
-    <string name="header_summary_battery">Battery bar, 1% battery mod, etc</string>
-    <string name="header_summary_general_ui">Boot animation, bug mailer, rotation, IME switcher, etc</string>
+    <string name="header_summary_battery">Battery Bar, Mods, Style</string>
+    <string name="header_summary_general_ui">Boot animation and audio, bug mailer, rotation, Recents Switcher, etc</string>
     <string name="header_summary_navigation_bar">Buttons to display, nav bar color, order</string>
     <string name="header_summary_lockscreens">Custom apps to launch, layout</string>
     <string name="header_summary_power_menu">What to display in your power menu</string>
-    <string name="header_summary_powersaver">Automatically disable data to save battery</string>
-    <string name="header_summary_led">Change default settings for Android to use</string>
+    <string name="header_summary_led">Now located under Settings Display.</string>
     <string name="header_summary_general">Settings button behavior</string>
     <string name="header_summary_toggles">Customize toggles</string>
-	<string name="header_summary_clock">Clock location, AM/PM style, color</string>
-	<string name="header_summary_weather">Enable/disable, set custom location or network, and interval</string>
-	<string name="header_summary_signal">Signal dBm text</string>
+    <string name="header_summary_clock">Clock location, AM/PM style, color</string>
+    <string name="header_summary_signal">Signal dBm text</string>
 	
     <string name="advanced_settings">Advanced settings</string>
     <string name="misc_short">Misc</string>
@@ -110,7 +108,7 @@
     <string name="summary_pref_lockscreen_menu_unlock">Legacy menu icon unlocks screen (requires reboot)</string>
     <string name="title_lockscreen_user_timeout_override">Wait to lock screen</string>
     <string name="summary_lockscreen_user_timeout_override">Use Android\'s timeout setting after you manually turn the screen off. The default behavior is to use the delay only when the screen times out by itself.</string>
-    <string name="show_lock_before_unlock_title">Show lockscreen before unlock</string>
+    <string name="show_lock_before_unlock_title">Show lockscreen</string>
     <string name="show_lock_before_unlock_summary">Show standard lockscreen before secure unlock</string>
     <string name="lockscreen_battery_title">Lockscreen Battery Percentage</string>
     <string name="lockscreen_battery_summary">Always show battery percentage on the lockscreen</string>
@@ -149,18 +147,7 @@
     <string name="title_show_airplane_toggle">Show airplane toggle</string>
     <string name="title_show_navbar_hide">Show navigation bar toggle</string>
     
-   
-
-    <!--  LED -->
-    <string name="title_led_on">LED pulse ON duration</string>
-    <string name="summary_led_on">@null</string>
-    <string name="title_led_off">LED pulse OFF duration</string>
-    <string name="summary_led_off">@null</string>
-    <string name="led_color_title">LED color</string>
-     <string name="led_color_summary">This will change the default LED color. Apps can easily override this setting with their own color.</string>
-    <string name="title_led_screen_on">LED flash while screen ON</string>
-    <string name="summary_led_screen_on">@null</string>
-
+  
     <!--  Statusbar | General -->
     <string name="title_settings_behavior">Use default settings behavior</string>
     <string name="summary_settings_behavior">Default behavior is to long press for toggles, press for settings. Uncheck to press for toggles, long press for settings</string>

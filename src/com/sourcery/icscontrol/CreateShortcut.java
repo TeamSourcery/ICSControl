@@ -58,9 +58,8 @@ public class CreateShortcut extends LauncherActivity {
         String c = className.substring(className.lastIndexOf(".") + 1);
 
         
-         if (c.equals("Led"))
-            return R.drawable.ic_ics_control_led;
-        else if (c.equals("Lockscreens"))
+        
+        if (c.equals("Lockscreens"))
             return R.drawable.ic_ics_control_lockscreens;
         else if (c.equals("Navbar"))
             return R.drawable.ic_ics_control_navigation_bar;
