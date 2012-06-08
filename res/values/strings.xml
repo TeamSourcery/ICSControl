@@ -250,6 +250,15 @@
         <string name="navbar_action_screenshot">Screenshot</string>
         <string name="navbar_action_none">Empty</string>
  
+        <string name="navbar_enable_bar">Enable bar</string>
+        <string name="navbar_widgets">Navigation Bar Widgets</string>
+        <string name="navbar_widgets_reset">Reset navbar widgets</string>
+
+      <!-- Menu Strings -->
+        <string name="menu_lockscreens_remove_wallpaper">Reset lockscreen wallpaper</string>
+        <string name="menu_main_activity_change_locale">Locale</string>
+        <string name="menu_nav_bar_reset">Reset nav bar</string>
+
         <string name="navbar_enable_dialog_title">Reboot required!</string>
         <string name="navbar_enable_dialog_msg">Please reboot to enable/disable the navigation bar properly!</string>
         <string name="navbar_enable_dialog_negative">I\'ll reboot later</string>

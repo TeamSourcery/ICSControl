@@ -463,6 +463,7 @@
 		<item>Recents</item>
 		<item>Search</item>
 		<item>Menu</item>
+                <item>Toggle Widgets</item>
 		<item>Kill app</item>
 		<item>Power</item>
                 <item>Screenshot</item>
@@ -476,6 +477,7 @@
 		<item>**recents**</item>
 		<item>**search**</item>
 		<item>**menu**</item>
+                <item>**widgets**</item>
 		<item>**kill**</item>
 		<item>**power**</item>
                 <item>**screenshot**</item>
