@@ -266,4 +266,11 @@
 
          <string name="status_bar_notif_count_title">Show notification count</string>
          <string name="status_bar_notif_count_summary">Display number of pending notifications on the status bar</string>
+
+       <!-- miui carrier text strings Strings -->
+        <string name="top_carrier_title">MIUI Style Carrier Text</string>
+        <string name="top_carrier_summary">Enable the carrier text in the statusbar in a style like MIUI **MUST REBOOT BETWEEN CARRIER AND CUSTOM**</string>
+ 	<string name="top_carrier_color">MIUI Carrier Text Color</string>
+         <string name="carrier_text">Custom Carrier Text</string>
+        <string name="status_bar_carrier">Carrier Text Modifications</string>
   </resources>

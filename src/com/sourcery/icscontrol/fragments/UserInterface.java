@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -15,9 +16,11 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
+import android.util.Log;
 import android.text.Spannable;
 import android.widget.EditText;
 
@@ -25,6 +28,7 @@ import com.sourcery.icscontrol.R;
 import com.sourcery.icscontrol.SettingsPreferenceFragment;
 import com.sourcery.icscontrol.util.CMDProcessor;
 import com.sourcery.icscontrol.util.Helpers;
+import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 public class UserInterface extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
@@ -40,23 +44,27 @@ public class UserInterface extends SettingsPreferenceFragment implements
     private static final String PREF_ROTATION_ANIMATION = "rotation_animation_delay";
     private static final String PREF_180 = "rotate_180";
     private static final String PREF_RECENT_APP_SWITCHER = "recent_app_switcher";
+    private static final String TOP_CARRIER = "top_carrier";
+    private static final String TOP_CARRIER_COLOR = "top_carrier_color";
 
     CheckBoxPreference mCrtOnAnimation;
     CheckBoxPreference mCrtOffAnimation;
-CheckBoxPreference mEnableVolumeOptions;
+    CheckBoxPreference mEnableVolumeOptions;
     CheckBoxPreference mShowImeSwitcher;
     CheckBoxPreference mLongPressToKill;
     CheckBoxPreference mAllow180Rotation;
     Preference mCustomLabel;
+    ListPreference mTopCarrier;
     ListPreference mAnimationRotationDelay;
     CheckBoxPreference mDisableBootAnimation;
     CheckBoxPreference mDisableBootAudio;
     CheckBoxPreference mDisableBugMailer;
     ListPreference mRecentAppSwitcher;
-
+  
     String mCustomLabelText = null;
     int newDensityValue;
 
+    ColorPickerPreference mTopCarrierColor;
   
 
     @Override
@@ -75,7 +83,7 @@ CheckBoxPreference mEnableVolumeOptions;
         mCrtOnAnimation.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.CRT_ON_ANIMATION, 0) == 1);
 
- mEnableVolumeOptions = (CheckBoxPreference) findPreference(PREF_ENABLE_VOLUME_OPTIONS);
+        mEnableVolumeOptions = (CheckBoxPreference) findPreference(PREF_ENABLE_VOLUME_OPTIONS);
         mEnableVolumeOptions.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.ENABLE_VOLUME_OPTIONS, 0) == 1);
 
@@ -87,9 +95,17 @@ CheckBoxPreference mEnableVolumeOptions;
         mCustomLabel = findPreference(PREF_CUSTOM_CARRIER_LABEL);
         updateCustomLabelTextSummary();
 
+         mTopCarrierColor = (ColorPickerPreference) findPreference(TOP_CARRIER_COLOR);
+ 	 mTopCarrierColor.setOnPreferenceChangeListener(this);
+
         mLongPressToKill = (CheckBoxPreference) findPreference(PREF_LONGPRESS_TO_KILL);
         mLongPressToKill.setChecked(Settings.Secure.getInt(getActivity().getContentResolver(),
                 Settings.Secure.KILL_APP_LONGPRESS_BACK, 0) == 1);
+
+        mTopCarrier = (ListPreference) findPreference(TOP_CARRIER);
+        mTopCarrier.setOnPreferenceChangeListener(this);
+        mTopCarrier.setValue(Settings.System.getInt(getActivity().getContentResolver(), Settings.System.TOP_CARRIER_LABEL,
+            0) + "");
 
         mAnimationRotationDelay = (ListPreference) findPreference(PREF_ROTATION_ANIMATION);
         mAnimationRotationDelay.setOnPreferenceChangeListener(this);
@@ -294,6 +310,17 @@ CheckBoxPreference mEnableVolumeOptions;
                 Settings.System.RECENT_APP_SWITCHER, val);
             Helpers.restartSystemUI();
             return true;  
+       } else if (preference == mTopCarrier) {
+        	Settings.System.putInt(getActivity().getContentResolver(), Settings.System.TOP_CARRIER_LABEL, Integer.parseInt((String) newValue));
+            return true;
+       } else if (preference == mTopCarrierColor) {
+            String hexColor = ColorPickerPreference.convertToARGB(Integer.valueOf(String
+                    .valueOf(newValue)));
+            preference.setSummary(hexColor);
+            int color = ColorPickerPreference.convertToColorInt(hexColor);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.TOP_CARRIER_LABEL_COLOR, color);
+            return true;
         }
         return false;
     }
