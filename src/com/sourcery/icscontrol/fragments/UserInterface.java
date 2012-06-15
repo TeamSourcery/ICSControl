@@ -211,6 +211,7 @@ public class UserInterface extends SettingsPreferenceFragment implements
                     Settings.System.putString(getActivity().getContentResolver(),
                             Settings.System.CUSTOM_CARRIER_LABEL, value);
                     updateCustomLabelTextSummary();
+                Helpers.restartSystemUI();
                 }
             });
 
@@ -312,6 +313,7 @@ public class UserInterface extends SettingsPreferenceFragment implements
             return true;  
        } else if (preference == mTopCarrier) {
         	Settings.System.putInt(getActivity().getContentResolver(), Settings.System.TOP_CARRIER_LABEL, Integer.parseInt((String) newValue));
+            Helpers.restartSystemUI();
             return true;
        } else if (preference == mTopCarrierColor) {
             String hexColor = ColorPickerPreference.convertToARGB(Integer.valueOf(String
