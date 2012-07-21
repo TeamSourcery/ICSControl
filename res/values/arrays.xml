@@ -16,13 +16,13 @@
         <item>Don\'t show</item>
         <item>Small AM/PM</item>
         <item>Regular AM/PM</item>
-        <item>ProTekk O\'Clock</item>
+        
     </string-array>
     <string-array name="clock_ampm_values" translatable="false">
         <item>2</item>
         <item>1</item>
         <item>0</item>
-        <item>3</item>
+      
     </string-array>
     <string-array name="clock_weekday_entries">
         <item>Don\'t show</item>
@@ -95,7 +95,7 @@
     <string-array name="battery_icon_entries">
 	<item>Icon only</item>
 	<item>Text only</item>
-	<item>Icon with text</item>
+	
 	<item>Icon with centered text</item>
 	<item>Turn on Batery Mods</item>
 	<item>Vanish</item>
@@ -104,7 +104,7 @@
     <string-array name="battery_icon_values" translatable="false">
 	<item>0</item>
 	<item>1</item>
-	<item>2</item>
+	
 	<item>3</item>
 	<item>4</item>
 	<item>5</item>
