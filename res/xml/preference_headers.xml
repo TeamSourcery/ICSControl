@@ -1,6 +1,12 @@
 <preference-headers xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <header
+        android:id="@+id/statusbar_battery"
+        android:title="@string/battery"
+        android:fragment="com.sourcery.icscontrol.fragments.StatusBarBattery"
+        android:icon="@drawable/ic_ics_control_battery"
+        android:summary="@string/header_summary_battery" />
+    <header
         android:id="@+id/statusbar"
         android:title="@string/header_statusbar" />
     <header
@@ -15,5 +21,7 @@
         android:icon="@drawable/ic_ics_control_toggles"
         android:summary="@string/header_summary_toggles"
         android:title="@string/toggles_layout" />
+
+    
 
 </preference-headers>
