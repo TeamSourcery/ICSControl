@@ -1,7 +1,6 @@
 
 package com.sourcery.icscontrol.fragments;
 
-import net.margaritov.preference.colorpicker.ColorPickerPreference;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
@@ -11,22 +10,18 @@ import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.util.Log;
 
-import com.sourcery.icscontrol.R;
 import com.sourcery.icscontrol.SettingsPreferenceFragment;
+import com.sourcery.icscontrol.R;
 
 public class StatusBarClock extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 
     private static final String PREF_ENABLE = "clock_style";
     private static final String PREF_AM_PM_STYLE = "clock_am_pm_style";
-    private static final String PREF_COLOR_PICKER = "clock_color";
-    private static final String PREF_ALARM_ENABLE = "alarm";
     private static final String PREF_CLOCK_WEEKDAY = "clock_weekday";
 
     ListPreference mClockStyle;
     ListPreference mClockAmPmstyle;
-    CheckBoxPreference mAlarm;
-    ColorPickerPreference mColorPicker;
     ListPreference mClockWeekday;
 
     @Override
@@ -48,40 +43,12 @@ public class StatusBarClock extends SettingsPreferenceFragment implements
                 .getContentResolver(), Settings.System.STATUSBAR_CLOCK_AM_PM_STYLE,
                 2)));
 
-        mColorPicker = (ColorPickerPreference) findPreference(PREF_COLOR_PICKER);
-        mColorPicker.setOnPreferenceChangeListener(this);
-
-        mAlarm = (CheckBoxPreference) findPreference(PREF_ALARM_ENABLE);
-        mAlarm.setChecked(Settings.System.getInt(getActivity()
-                .getContentResolver(), Settings.System.STATUSBAR_SHOW_ALARM,
-                1) == 1);
-
         mClockWeekday = (ListPreference) findPreference(PREF_CLOCK_WEEKDAY);
         mClockWeekday.setOnPreferenceChangeListener(this);
         mClockWeekday.setValue(Integer.toString(Settings.System.getInt(getActivity()
                 .getContentResolver(), Settings.System.STATUSBAR_CLOCK_WEEKDAY,
                 0)));
 
-        if (mTablet) {
-            PreferenceScreen prefs = getPreferenceScreen();
-            prefs.removePreference(mClockAmPmstyle);
-        }
-    }
-
-    @Override
-    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
-            Preference preference) {
-
-        if (preference == mAlarm) {
-
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.STATUSBAR_SHOW_ALARM,
-                    ((CheckBoxPreference) preference).isChecked() ? 1 : 0);
-
-            return true;
-        }
-
-        return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
     @Override
@@ -100,15 +67,6 @@ public class StatusBarClock extends SettingsPreferenceFragment implements
             result = Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.STATUSBAR_CLOCK_STYLE, val);
 
-        } else if (preference == mColorPicker) {
-            String hex = ColorPickerPreference.convertToARGB(Integer.valueOf(String
-                    .valueOf(newValue)));
-            preference.setSummary(hex);
-
-            int intHex = ColorPickerPreference.convertToColorInt(hex);
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.STATUSBAR_CLOCK_COLOR, intHex);
-            Log.e("ROMAN", intHex + "");
         } else if (preference == mClockWeekday) {
             int val = Integer.parseInt((String) newValue);
             result = Settings.System.putInt(getActivity().getContentResolver(),

@@ -24,34 +24,8 @@
  
             </intent-filter>
         </activity>
-        <activity
-            android:name=".fragments.UserInterface"
-            android:label="User Interface" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="com.sourcery.icscontrol.SHORTCUT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".fragments.StatusBarBattery"
-            android:label="Statusbar Battery" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="com.sourcery.icscontrol.SHORTCUT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".fragments.StatusBarToggles"
-            android:label="Statusbar Toggles" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="com.sourcery.icscontrol.SHORTCUT" />
-            </intent-filter>
-        </activity>
-        <activity
+  
+         <activity
             android:name=".fragments.StatusBarClock"
             android:label="Statusbar Clock" >
             <intent-filter>
@@ -60,73 +34,14 @@
                 <category android:name="com.sourcery.icscontrol.SHORTCUT" />
             </intent-filter>
         </activity>
-       
-        
-       
-        <activity
-            android:name=".fragments.PowerMenu"
-            android:label="Power Menu" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="com.sourcery.icscontrol.SHORTCUT" />
-            </intent-filter>
-        </activity>
-       
-        <activity
-            android:name=".fragments.Lockscreens"
-            android:label="Lockscreens" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="com.sourcery.icscontrol.SHORTCUT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".fragments.Navbar"
-            android:label="Navigation Bar" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="com.sourcery.icscontrol.SHORTCUT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".fragments.StatusBarGeneral"
-            android:label="Statusbar General" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="com.sourcery.icscontrol.SHORTCUT" />
-            </intent-filter>
-        </activity>
-        <activity
+      
+          <activity
             android:name=".fragments.StatusBarToggles"
             android:label="Statusbar Toggles" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="com.sourcery.icscontrol.SHORTCUT" />
-            </intent-filter>
-        </activity>
-        
-               
-        <activity
-            android:name=".fragments.StatusBarSignal"
-            android:label="Statusbar Signal" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
-
- 
-        <activity
-            android:name="CreateShortcut"
-            android:theme="@style/Theme.CreateShortCut" >
-            <intent-filter>
-                <action android:name="android.intent.action.CREATE_SHORTCUT" />
-
-                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 

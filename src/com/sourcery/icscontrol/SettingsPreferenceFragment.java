@@ -45,10 +45,18 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements Di
 
     private SettingsDialogFragment mDialogFragment;
     protected boolean mTablet;
+    protected boolean hasTorch;
+    protected boolean hasHardwareButtons;
+    protected boolean hasFastCharge;
+    protected boolean hasColorTuning;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        mTablet = Settings.System.getInt(getContentResolver(), Settings.System.IS_TABLET, 0) == 1;
+        mTablet = Settings.System.getBoolean(getContentResolver(), Settings.System.TABLET_UI, false);
+        hasTorch = getResources().getBoolean(R.bool.has_torch);
+        hasHardwareButtons = getResources().getBoolean(R.bool.has_hardware_buttons);
+        hasFastCharge = getResources().getBoolean(R.bool.has_fast_charge);
+        hasColorTuning = getResources().getBoolean(R.bool.has_color_tuning);
         mContext = getActivity().getApplicationContext();
         super.onCreate(savedInstanceState);
     }

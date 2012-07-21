@@ -307,7 +307,7 @@ public class TouchInterceptor extends ListView {
 
         Context context = getContext();
         ImageView v = new ImageView(context);
-        int backGroundColor = context.getResources().getColor(R.color.dragndrop_background);
+        int backGroundColor = 0xE0103010;
         v.setBackgroundColor(backGroundColor);
         v.setImageBitmap(bm);
         mDragBitmap = bm;
