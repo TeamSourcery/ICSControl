@@ -22,6 +22,14 @@
         android:summary="@string/header_summary_toggles"
         android:title="@string/toggles_layout" />
 
+    <header android:title="@string/lockscreen_options" />
+
+    <header
+	android:id="@+id/lockscreens"
+	android:fragment="com.sourcery.icscontrol.fragments.Lockscreens"
+	android:title="@string/lockscreen_options"
+	android:icon="@drawable/ic_ics_control_lockscreens"
+	android:summary="@string/header_summary_lockscreens" />
     
 
 </preference-headers>
