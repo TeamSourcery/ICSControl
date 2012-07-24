@@ -15,6 +15,25 @@
         android:summary="@string/header_summary_clock"
         android:icon="@drawable/ic_ics_control_clock"
         android:title="@string/clock" />
+
+    <header
+        android:id="@+id/user_interface"
+	android:fragment="com.sourcery.icscontrol.fragments.UserInterface"
+        android:title="@string/general_ui"
+        android:icon="@drawable/ic_ics_control_general_ui"
+	android:summary="@string/header_summary_general_ui" />
+    
+    <header
+        android:id="@+id/navbar"
+        android:title="@string/header_navbar" />
+
+     <header
+        android:id="@+id/nav_bar"
+        android:fragment="com.sourcery.icscontrol.fragments.Navbar"
+        android:title="@string/nav_bar"
+        android:icon="@drawable/ic_ics_control_navigation_bar"
+        android:summary="@string/header_summary_navigation_bar" />
+
     <header
         android:id="@+id/statusbar_toggles"
         android:fragment="com.sourcery.icscontrol.fragments.StatusBarToggles"
@@ -30,6 +49,5 @@
 	android:title="@string/lockscreen_options"
 	android:icon="@drawable/ic_ics_control_lockscreens"
 	android:summary="@string/header_summary_lockscreens" />
-    
 
 </preference-headers>

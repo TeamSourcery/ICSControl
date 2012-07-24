@@ -53,7 +53,32 @@
                 <category android:name="com.sourcery.icscontrol.SHORTCUT" />
             </intent-filter>
         </activity>
-        
-    </application>
+        <activity
+            android:name=".fragments.Navbar"
+	    android:label="Navigation Bar" >
+	    <intent-filter>
+              <action android:name="android.intent.action.MAIN" />
+              <category android:name="com.sourcery.icscontrol.SHORTCUT" />
+	            </intent-filter>
+	        </activity>
+         <activity
+            android:name=".fragments.PowerMenu"
+            android:label="Power Menu" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.sourcery.icscontrol.SHORTCUT" />
+            </intent-filter>
+        </activity>
+          <activity
+	            android:name=".fragments.UserInterface"
+	            android:label="User Interface" >
+	            <intent-filter>
+	                <action android:name="android.intent.action.MAIN" />
+	
+	                <category android:name="com.sourcery.icscontrol.SHORTCUT" />
+	            </intent-filter>
+	        </activity>
+        </application>
 
 </manifest>
