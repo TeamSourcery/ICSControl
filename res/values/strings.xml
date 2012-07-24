@@ -14,12 +14,14 @@
     <string name="power_menu_optons">Power menu options</string>
     <string name="clock">Clock</string>
     <string name="battery">Battery</string>
+    <string name="lockscreen_options">Lockscreen options</string>
 
     <!-- Header Summaries -->
     <string name="header_summary_clock">Clock location, AM/PM style, color</string>
     <string name="header_summary_navigation_bar">Height/Width</string>
     <string name="header_summary_toggles">Customize toggles</string>
     <string name="header_summary_general_ui">Boot animation, bug mailer, rotation, IME switcher, etc</string>
+    <string name="header_summary_lockscreens">Toggle lockscreen options</string>
     <string name="header_summary_battery">Battery bar, battery mods, etc</string>
     <string name="header_summary_power_menu">What to display in your power menu</string>
     
@@ -151,4 +153,7 @@
     <string name="title_show_navbar_hide">Show navigation bar toggle</string>
     
 
-</resources>
+    <string name="show_lock_before_unlock_title">Show lockscreen</string>
+    <string name="show_lock_before_unlock_summary">Show standard lockscreen before secure unlock</string>
+
+ </resources>
