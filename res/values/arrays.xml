@@ -18,14 +18,14 @@
         <item>Don\'t show</item>
         <item>Small AM/PM</item>
         <item>Regular AM/PM</item>
-        <item>ProTekk O\'Clock</item>
+        
     </string-array>
 
     <string-array name="clock_ampm_values" translatable="false">
         <item>2</item>
         <item>1</item>
         <item>0</item>
-        <item>3</item>
+        
     </string-array>
 
     <string-array name="clock_weekday_entries">
