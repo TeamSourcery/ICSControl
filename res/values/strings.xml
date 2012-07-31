@@ -18,7 +18,7 @@
 
     <!-- Header Summaries -->
     <string name="header_summary_clock">Clock location, AM/PM style, color</string>
-    <string name="header_summary_navigation_bar">Height/Width</string>
+    <string name="header_summary_navigation_bar">Navigation Bar Options</string>
     <string name="header_summary_toggles">Customize toggles</string>
     <string name="header_summary_general_ui">Boot animation, bug mailer, rotation, IME switcher, etc</string>
     <string name="header_summary_lockscreens">Toggle lockscreen options</string>
@@ -118,9 +118,9 @@
     <string name="title_pref_navigation_menu_display">Menu visibility</string>
     <string name="summary_pref_navigation_menu_display">How and when do you want the menu buttons to appear?</string>
 
-    <string name="navbar_qty_title">Number of Nav Buttons</string>
+    <string name="navbar_qty_title">Navigation 1-5 Keys</string>
     <string name="navbar_qty_summary">Choose the number of navigation buttons</string>
-
+    <string name="button_transparency_title">Nav button transparency</string>
     <string name="navbar_action_title">Button %1$s action &amp; icon</string>
     <string name="navbar_longpress_title">Button %1$s longpress action</string>
 
@@ -136,12 +136,21 @@
     <string name="navbar_widgets">Navigation Bar Widgets</string>
     <string name="navbar_enable_bar">Enable bar</string>
     <string name="navigation_bar_height_title">Navigation bar height</string>
-    <string name="navigation_bar_height_summary">Navigation Bar height while in portrait</string>
+    <string name="navigation_bar_height_summary">Navigation Bar height while in portrait.</string>
     <string name="navigation_bar_height_landscape_title">Navigation bar height landscape</string>
-    <string name="navigation_bar_height_landscape_summary">Navigation Bar height while in landscape</string>
-    <string name="navigation_bar_width_title">Navigation bar width</string>
-    <string name="navigation_bar_width_summary">Navigation Bar height if the bar is along a side</string>
-  
+    <string name="navigation_bar_height_landscape_summary">Navigation Bar height while in landscape.</string>
+    <string name="navigation_bar_width_title">Navigation bar width.</string>
+    <string name="navigation_bar_width_summary">Navigation Bar height if the bar is along a side.</string>
+    <string name="navbar_enable_dialog_title">Reboot required!</string>
+    <string name="navbar_enable_dialog_msg">Please reboot to enable/disable the navigation bar properly!</string>
+    <string name="navbar_enable_dialog_negative">I\'ll reboot later</string>
+    <string name="navbar_enable_dialog_Positive">Reboot now!</string>
+    <string name="navbar_height_dialog_title">Reboot required!</string>
+    <string name="navbar_height_dialog_summary">Please reboot for height change to be added properly!</string>
+    <string name="navbar_height_dialog_button_later">I\'ll reboot later</string>
+    <string name="navbar_height_dialog_button_reboot">Reboot now!</string>
+ 	 	
+
      <!-- General UI -->
     <string name="enable_volume_options">Enable Volume Panel</string>
 

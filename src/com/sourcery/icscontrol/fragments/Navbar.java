@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ListFragment;
 import android.appwidget.AppWidgetHost;
 import android.appwidget.AppWidgetManager;
@@ -56,12 +57,13 @@ import com.sourcery.icscontrol.SettingsPreferenceFragment;
 import com.sourcery.icscontrol.R;
 import com.sourcery.icscontrol.util.ShortcutPickerHelper;
 import com.sourcery.icscontrol.widgets.NavBarItemPreference;
+import com.sourcery.icscontrol.widgets.SeekBarPreference;
 
 public class Navbar extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener, ShortcutPickerHelper.OnPickListener {
 
     // move these later
-	private static final String PREF_MENU_UNLOCK = "pref_menu_display";
+    private static final String PREF_MENU_UNLOCK = "pref_menu_display";
     private static final String PREF_NAVBAR_MENU_DISPLAY = "navbar_menu_display";
     private static final String PREF_NAVBAR_QTY = "navbar_qty";
     private static final String ENABLE_NAVIGATION_BAR = "enable_navigation_bar";
@@ -71,6 +73,8 @@ public class Navbar extends SettingsPreferenceFragment implements
 
     public static final int REQUEST_PICK_CUSTOM_ICON = 200;
     public static final int REQUEST_PICK_LANDSCAPE_ICON = 201;
+    private static final int DIALOG_NAVBAR_ENABLE = 203;
+    private static final int DIALOG_NAVBAR_HEIGHT_REBOOT = 204;
 
     public static final String PREFS_NAV_BAR = "navbar";
 
@@ -82,6 +86,7 @@ public class Navbar extends SettingsPreferenceFragment implements
     ListPreference mNavigationBarHeight;
     ListPreference mNavigationBarHeightLandscape;
     ListPreference mNavigationBarWidth;
+    SeekBarPreference mButtonAlpha;
 
     private int mPendingIconIndex = -1;
     private int mPendingWidgetDrawer = -1;
@@ -132,6 +137,16 @@ public class Navbar extends SettingsPreferenceFragment implements
         mEnableNavigationBar = (CheckBoxPreference) findPreference("enable_nav_bar");
         mEnableNavigationBar.setChecked(Settings.System.getInt(getContentResolver(),
                 Settings.System.NAVIGATION_BAR_SHOW, hasNavBarByDefault ? 1 : 0) == 1);
+
+        float defaultAlpha = Settings.System.getFloat(getActivity()
+                .getContentResolver(), Settings.System.NAVIGATION_BAR_BUTTON_ALPHA,
+                0.6f);
+        mButtonAlpha = (SeekBarPreference) findPreference("button_transparency");
+        mButtonAlpha.setInitValue((int) (defaultAlpha * 100));
+        mButtonAlpha.setOnPreferenceChangeListener(this);
+
+
+
         // don't allow devices that must use a navigation bar to disable it
         if (hasNavBarByDefault || mTablet) {
             prefs.removePreference(mEnableNavigationBar);
@@ -194,7 +209,7 @@ public class Navbar extends SettingsPreferenceFragment implements
         }
     }
 
-    @Override
+     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
             Preference preference) {
         if (preference == mEnableNavigationBar) {
@@ -202,11 +217,13 @@ public class Navbar extends SettingsPreferenceFragment implements
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.NAVIGATION_BAR_SHOW,
                     ((CheckBoxPreference) preference).isChecked() ? 1 : 0);
+              showDialog(DIALOG_NAVBAR_ENABLE);
+             return true;
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
-    @Override
+     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
 
         if (preference == menuDisplayLocation) {
@@ -223,14 +240,13 @@ public class Navbar extends SettingsPreferenceFragment implements
                     Settings.System.NAVIGATION_BAR_BUTTONS_QTY, val);
             refreshSettings();
             return true;
-
         } else if (preference == mNavigationBarWidth) {
             String newVal = (String) newValue;
             int dp = Integer.parseInt(newVal);
             int width = mapChosenDpToPixels(dp);
             Settings.System.putInt(getContentResolver(), Settings.System.NAVIGATION_BAR_WIDTH,
                     width);
-            toggleBar();
+            showDialog(DIALOG_NAVBAR_HEIGHT_REBOOT);
             return true;
         } else if (preference == mNavigationBarHeight) {
             String newVal = (String) newValue;
@@ -238,7 +254,7 @@ public class Navbar extends SettingsPreferenceFragment implements
             int height = mapChosenDpToPixels(dp);
             Settings.System.putInt(getContentResolver(), Settings.System.NAVIGATION_BAR_HEIGHT,
                     height);
-            toggleBar();
+            showDialog(DIALOG_NAVBAR_HEIGHT_REBOOT);
             return true;
         } else if (preference == mNavigationBarHeightLandscape) {
             String newVal = (String) newValue;
@@ -246,7 +262,7 @@ public class Navbar extends SettingsPreferenceFragment implements
             int height = mapChosenDpToPixels(dp);
             Settings.System.putInt(getContentResolver(), Settings.System.NAVIGATION_BAR_HEIGHT_LANDSCAPE,
                     height);
-            toggleBar();
+            showDialog(DIALOG_NAVBAR_HEIGHT_REBOOT);
             return true;    
 
         }  else if ((preference.getKey().startsWith("navbar_action"))
@@ -281,10 +297,16 @@ public class Navbar extends SettingsPreferenceFragment implements
             }
             refreshSettings();
             return true;
+        } else if (preference == mButtonAlpha) {
+            float val = Float.parseFloat((String) newValue);
+            Log.e("R", "value: " + val / 100);
+            Settings.System.putFloat(getActivity().getContentResolver(),
+                    Settings.System.NAVIGATION_BAR_BUTTON_ALPHA,
+                    val / 100);
+            return true;
 
         }
-
-        return false;
+	return false;
     }
 
     public void toggleBar() {
@@ -294,6 +316,62 @@ public class Navbar extends SettingsPreferenceFragment implements
                 Settings.System.NAVIGATION_BAR_SHOW, isBarOn ? 0 : 1);
         Settings.System.putInt(mContext.getContentResolver(),
                 Settings.System.NAVIGATION_BAR_SHOW, isBarOn ? 1 : 0);
+    }
+
+    @Override
+    public Dialog onCreateDialog(int dialogId) {
+        LayoutInflater factory = LayoutInflater.from(mContext);
+
+        switch (dialogId) {
+            case DIALOG_NAVBAR_ENABLE:
+                final View textEntryView = factory.inflate(
+                        R.layout.alert_dialog_text_entry, null);
+                return new AlertDialog.Builder(getActivity())
+                    .setTitle(getResources().getString(R.string.navbar_enable_dialog_title))
+                    .setMessage(getResources().getString(R.string.navbar_enable_dialog_msg))
+                    .setCancelable(false)
+                    .setPositiveButton(
+                            getResources().getString(R.string.navbar_enable_dialog_Positive),
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    PowerManager pm = (PowerManager) getActivity()
+                                            .getSystemService(Context.POWER_SERVICE);
+                                    pm.reboot("New navbar");
+                            }
+                        })
+                    .setNegativeButton(
+                            getResources().getString(R.string.navbar_enable_dialog_negative), new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+
+                                dialog.dismiss();
+                            }
+                        }).create();
+            case DIALOG_NAVBAR_HEIGHT_REBOOT:
+                return new AlertDialog.Builder(getActivity())
+                        .setTitle(getResources().getString(R.string.navbar_height_dialog_title))
+                        .setMessage(
+                                getResources().getString(R.string.navbar_height_dialog_summary))
+                        .setCancelable(false)
+                        .setNeutralButton(getResources().getString(R.string.navbar_height_dialog_button_later), new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        })
+                        .setPositiveButton(getResources().getString(R.string.navbar_height_dialog_button_reboot), new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                PowerManager pm = (PowerManager) getActivity()
+                                        .getSystemService(Context.POWER_SERVICE);
+                                pm.reboot("Rebooting with new bar height");
+                            }
+                        })
+                        .create();
+        }
+        return null;
     }
 
     public int mapChosenDpToPixels(int dp) {
@@ -502,7 +580,7 @@ public class Navbar extends SettingsPreferenceFragment implements
  	 	
            return getResources().getDrawable(R.drawable.ic_sysbar_screenshot);
             }
-        } else {
+         } else {
             try {
                 return mContext.getPackageManager().getActivityIcon(Intent.parseUri(uri, 0));
             } catch (NameNotFoundException e) {
@@ -515,7 +593,7 @@ public class Navbar extends SettingsPreferenceFragment implements
         return getResources().getDrawable(R.drawable.ic_sysbar_null);
     }
 
-    private String getProperSummary(int i, boolean longpress) {
+     private String getProperSummary(int i, boolean longpress) {
         String uri = "";
         if (longpress)
             uri = Settings.System.getString(getActivity().getContentResolver(),
