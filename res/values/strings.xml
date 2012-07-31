@@ -150,6 +150,7 @@
     <string name="navbar_height_dialog_button_later">I\'ll reboot later</string>
     <string name="navbar_height_dialog_button_reboot">Reboot now!</string>
  	 	
+    <string name="dpi">DPI</string>
 
      <!-- General UI -->
     <string name="enable_volume_options">Enable Volume Panel</string>
